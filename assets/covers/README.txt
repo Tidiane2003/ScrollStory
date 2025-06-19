@@ -1,0 +1,1 @@
+Ajoutez ici les images de couverture pour vos œuvres (ex: feuilles.jpg, elue.jpg...)

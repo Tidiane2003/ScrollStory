@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScrollStory – Œuvres & Reportage Visuel</title>
+
+  <!-- Bootstrap 5 + AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root{ --accent:#d63384; }
+    body{ scroll-behavior:smooth; font-family:'Segoe UI',sans-serif; }
+    section{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:60px 0; }
+    .hero{ background:url('assets/images/hero.jpg') center/cover fixed; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.6); flex-direction:column; }
+    .hero h1{font-size:4rem;}
+    .chapter-img{ max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.2); }
+    .quote{ background:linear-gradient(135deg,#1f1c2c,#928dab); color:#fff; font-size:2rem; text-align:center; padding:120px 20px; font-style:italic; }
+    .gallery img{ width:100%; height:250px; object-fit:cover; border-radius:8px; }
+    footer{ background:#000; color:#fff; padding:60px 0; }
+    .back-to-top{ position:fixed; bottom:20px; right:20px; z-index:999; background:var(--accent); color:#fff; border-radius:50%; width:44px; height:44px; display:none; align-items:center; justify-content:center; }
+    .back-to-top.show{display:flex;}
+
+    .link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.modern-link {
+  padding: 0.75rem 2rem;
+  border: 2px solid #7FFFD4;
+  background: transparent;
+  color: #7FFFD4;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.modern-link:hover {
+  background-color: #7FFFD4;
+  color: #001F3F;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #7FFFD4aa;
+}
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero d-flex" id="top">
+  <h1 data-aos="fade-up">Reportage Visuel</h1>
+  <p data-aos="fade-up" data-aos-delay="200">Une immersion au cœur de l'action</p>
+  <a href="#chapter1" class="btn btn-light mt-4" data-aos="fade-up" data-aos-delay="400">Commencer</a>
+</section>
+
+<!-- Chapitre 1 – 22 Feuilles de Feu -->
+<section id="chapter1" class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right"><img src="img/22 feuilles de feu.png" class="chapter-img" alt="22 Feuilles de Feu"></div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h2>22 Feuilles de Feu</h2>
+      <p>Un recueil brûlant où les rues résonnent d’une poésie ardente ; chaque feuille est une braise, chaque mot une étincelle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Chapitre 2 – Elle est l'Élue -->
+<section id="chapter2" class="container bg-light">
+  <div class="row align-items-center flex-md-row-reverse">
+    <div class="col-md-6" data-aos="fade-left"><img src="img/Elle est l'élue.png" class="chapter-img" alt="Elle est l'élue"></div>
+    <div class="col-md-6" data-aos="fade-right">
+      <h2>Elle est l’Élue</h2>
+      <p>Une quête initiatique où destin et conviction s’entrelacent—portrait d’une héroïne au croisement de la lumière et de l’ombre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Autobiographie -->
+<section id="autobiographie" class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right"><img src="img/Tidiane.jpg" class="chapter-img" alt="Auteur"></div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h2>Autobiographie</h2>
+      <p>Je suis Cheikh Tidiane Mbow, conteur passionné par les récits visuels et la puissance des mots. Né à Dakar, j’ai grandi entre la rumeur urbaine et les légendes sérères qui me bercent encore aujourd’hui. Mon travail explore les marges : entre lumière et obscurité, réel et imaginaire. "22 Feuilles de Feu", "Elle est l’Élue", "Za & Tiju" et "Je me choisis" sont autant de fragments d’une quête d’identité, d’amour et d’insoumission.</p>
+      <p>À travers ce ScrollStory, je t’invite à voyager dans ces univers, à sentir le souffle des ruelles de Dakar, la braise des voix qui ne se taisent jamais, et le frisson des frontières que l’on dépasse.</p>
+      <div class="link-container">
+  <a href="https://lejournaldunsilence.netlify.app" class="modern-link">Découvrir mon espace personnel</a>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="quote"><blockquote data-aos="zoom-in">« Les images parlent là où les mots échouent. »</blockquote></section>
+
+<!-- Chapitre 3 – Za & Tiju -->
+<section id="chapter3" class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right"><img src="img/Za & Tiju.png" class="chapter-img" alt="Za & Tiju"></div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h2>Za & Tiju</h2>
+      <p>Une chronique urbaine en 26 épisodes : amour, trahison et rédemption s’écrivent dans les lueurs de la nuit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Galerie d’images -->
+<section id="gallery" class="container bg-light">
+  <h2 class="text-center mb-5" data-aos="fade-up">Galerie</h2>
+  <div class="row g-3 gallery">
+    <div class="col-6 col-md-3" data-aos="zoom-in"><img src="img/1.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100"><img src="img/2.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200"><img src="img/3.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><img src="img/4.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><img src="img/5.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><img src="img/6.jpg" alt=""></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><img src="img/7.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- Chapitre 4 – Je me choisis -->
+<section id="chapter4" class="container">
+  <div class="row align-items-center flex-md-row-reverse">
+    <div class="col-md-6" data-aos="fade-left"><img src="img/Je me choisis.png" class="chapter-img" alt="Je me choisis"></div>
+    <div class="col-md-6" data-aos="fade-right">
+      <h2>Je me choisis</h2>
+      <p>Un manifeste de l’âme : choisir sa propre voie, embrasser ses forces, réécrire son destin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Formulaire de contact -->
+<section id="contact" class="container text-center bg-dark text-white py-5">
+  <h2 data-aos="fade-up">Vous souhaitez en savoir plus ?</h2>
+  <p data-aos="fade-up" data-aos-delay="100">Envoyez‑moi un message et découvrons ensemble de nouvelles histoires.</p>
+  <form id="contactForm" class="row g-3 justify-content-center mt-4" data-aos="fade-up" data-aos-delay="200">
+    <div class="col-md-4"><input type="text" name="name" class="form-control" placeholder="Nom complet" required></div>
+    <div class="col-md-4"><input type="email" name="email" class="form-control" placeholder="Adresse e‑mail" required></div>
+    <div class="col-8"><textarea name="message" class="form-control" rows="4" placeholder="Votre message" required></textarea></div>
+    <div class="col-8"><button class="btn btn-outline-light w-100" type="submit">Envoyer</button></div>
+    <div class="col-8" id="formResponse"></div>
+  </form>
+</section>
+
+<footer class="text-center"><p class="mb-0">© 2025 Cheikh Tidiane Mbow – ScrollStory</p></footer>
+<a href="#top" class="back-to-top" id="topBtn">↑</a>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true });
+  const topBtn=document.getElementById('topBtn');
+  window.addEventListener('scroll',()=>{ topBtn.classList.toggle('show',window.scrollY>500);} );
+
+  // Contact form AJAX
+  const form=document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      const fd=new FormData(form);
+      fetch('php/contact.php',{method:'POST',body:fd})
+        .then(r=>r.json())
+        .then(data=>{
+          document.getElementById('formResponse').innerHTML=`<div class="alert alert-${data.success?'success':'danger'}">${data.message}</div>`;
+          if(data.success) form.reset();
+        })
+        .catch(()=>{ document.getElementById('formResponse').innerHTML='<div class="alert alert-danger">Erreur de réseau – réessayez.</div>';});
+    });
+  }
+</script>
+</body>
+</html>
