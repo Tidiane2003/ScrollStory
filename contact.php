@@ -1,17 +1,20 @@
 <?php
 /********************************************************************
- * contact.php – ScrollStory
+ * contact.php – ScrollStory (version optimisée)
  * ---------------------------------------------------------------
  * Reçoit les données POST du formulaire de contact :
- *  name, email, destination (facultatif), message
- *  → Valide les champs
- *  → Envoie un e‑mail à l’adresse configurée
- *  → Renvoie { success: bool, message: string } en JSON
+ *   - name
+ *   - email
+ *   - destination (facultatif)
+ *   - message
+ *
+ * Vérifie et nettoie les champs, puis envoie un e-mail
+ * en renvoyant un JSON clair : { success: bool, message: string }
  ********************************************************************/
 
 header('Content-Type: application/json; charset=utf-8');
 
-// 1) Méthode HTTP autorisée ?
+// --- 1️⃣ Vérification de la méthode HTTP ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode([
@@ -21,42 +24,63 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// 2) Récupération & nettoyage des données
-$name        = trim(htmlspecialchars($_POST['name']        ?? ''));
-$email       = trim(filter_var($_POST['email']             ?? '', FILTER_SANITIZE_EMAIL));
-$destination = trim(htmlspecialchars($_POST['destination'] ?? ''));
-$message     = trim(htmlspecialchars($_POST['message']     ?? ''));
+// --- 2️⃣ Récupération & nettoyage sécurisé ---
+function clean_input($data) {
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
 
-// 3) Validation minimale
+$name        = clean_input($_POST['name']        ?? '');
+$email       = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$destination = clean_input($_POST['destination'] ?? '');
+$message     = clean_input($_POST['message']     ?? '');
+
+// --- 3️⃣ Validation des champs ---
 if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $message === '') {
     echo json_encode([
         'success' => false,
-        'message' => 'Veuillez saisir un nom, un e‑mail valide et un message.'
+        'message' => 'Veuillez saisir un nom, un e-mail valide et un message.'
     ]);
     exit;
 }
 
-// 4) Préparation de l’e‑mail
-$to      = 'mbowtidiane013@gmail.com';   // 🔧 Ton adresse de réception
-$subject = 'Message ScrollStory – ' . ($destination ?: 'Sans destination précisée');
-$body    = "Nom         : $name\n"
-         . "E‑mail      : $email\n"
-         . "Destination : $destination\n\n"
-         . "Message :\n$message\n";
-$headers = "From: $email\r\n"
-         . "Reply-To: $email\r\n"
-         . "X-Mailer: PHP/" . phpversion();
+// --- 4️⃣ Configuration de l’e-mail ---
+$to = 'mbowtidiane013@gmail.com'; // 🔧 Adresse de réception
+$subject = '📩 Message ScrollStory – ' . ($destination ?: 'Sans destination précisée');
 
-// 5) Envoi
-if (mail($to, $subject, $body, $headers)) {
+$body = <<<EOT
+Vous avez reçu un nouveau message via ScrollStory :
+
+👤 Nom : $name
+✉️ E-mail : $email
+🎯 Destination : $destination
+
+💬 Message :
+$message
+EOT;
+
+// Entêtes e-mail sécurisées
+$headers = [
+    'From' => 'no-reply@scrollstory.com',
+    'Reply-To' => $email,
+    'Content-Type' => 'text/plain; charset=UTF-8',
+    'X-Mailer' => 'PHP/' . phpversion()
+];
+
+// --- 5️⃣ Envoi du mail ---
+$headers_string = '';
+foreach ($headers as $key => $value) {
+    $headers_string .= "$key: $value\r\n";
+}
+
+if (mail($to, $subject, $body, $headers_string)) {
     echo json_encode([
         'success' => true,
-        'message' => 'Message envoyé avec succès !'
+        'message' => '✅ Message envoyé avec succès. Merci de nous avoir contactés !'
     ]);
 } else {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Erreur lors de l’envoi du message. Réessayez plus tard.'
+        'message' => '❌ Une erreur est survenue lors de l’envoi. Réessayez plus tard.'
     ]);
 }
